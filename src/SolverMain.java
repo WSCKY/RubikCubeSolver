@@ -363,7 +363,33 @@ public class SolverMain extends JFrame implements ActionListener, ItemListener, 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
-		
+		int i;
+		Object src = e.getSource();
+		if( src == superBox ){
+			settings.superGroup=!settings.superGroup;
+			//now set box to reflect actual choice of group
+			superBox.setState( settings.superGroup );
+			//update group solvability flags
+			updateStatus(true);
+			// update view
+			cubeViewers[viewer].repaint();
+            return;
+		}else if( src == symTwoColBox ){
+			symTwoCol=!symTwoCol;
+			//set box to reflect actual choice
+			symTwoColBox.setState( symTwoCol );
+            return;
+		}
+		for( i=0;i<NUMGROUPS; i++){
+			if( src == groupRadioBox[i] ){
+				settings.group=i;
+				//now set box to reflect actual choice of group
+				cubeGroup.setSelectedCheckbox(groupRadioBox[settings.group]);
+                //update (group solvability flags and) solve button
+                updateStatus(false);
+				return;
+			}
+		}
 	}
 
 	//--- button action/listening routines ---
