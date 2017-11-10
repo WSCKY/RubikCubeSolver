@@ -49,6 +49,7 @@ public class SolverMain extends JFrame implements ActionListener, ItemListener, 
     Button backBut = new ImButton(4);
     Button endBut = new ImButton(7);
     Button beginBut = new ImButton(6);
+    Button TestBtn = new Button("Test");
 
     TabSet tabSet;
     Panel tabPanel[] = { new Panel(),new Panel() };
@@ -220,6 +221,7 @@ public class SolverMain extends JFrame implements ActionListener, ItemListener, 
 		boxPanel.add(playBut);  playBut.setBounds( bw2+bw*3,bh,bw,bh2);
 		boxPanel.add(stepBut);  stepBut.setBounds( bw2+bw*4,bh,bw,bh2);
 		boxPanel.add(endBut);   endBut.setBounds(  bw2+bw*5,bh,bw,bh2);
+		boxPanel.add(TestBtn);  TestBtn.setBounds( bw2+bw*6,bh,bw,bh2);
 
 		boxPanel.setBackground(colors[3]);
 
@@ -233,6 +235,7 @@ public class SolverMain extends JFrame implements ActionListener, ItemListener, 
 		playBut.addActionListener(this);
 		stepBut.addActionListener(this);
 		endBut.addActionListener(this);
+		TestBtn.addActionListener(this);
 
 
         // initialise all solvers
@@ -481,6 +484,8 @@ public class SolverMain extends JFrame implements ActionListener, ItemListener, 
 			setSequencePosition( (generator==null || solution)?
 									0 : generator.getLength() );
 			cubeViewers[viewer].repaint();
+		}else if( src == TestBtn ){
+        	//test
 		}else if( src == symResetBut ){
             //reset all buttons
             for(i=0;i<29;i++) symButton[i].setPressed(false);
